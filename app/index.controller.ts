@@ -12,13 +12,11 @@ export class AppController {
 
     $log.debug ( $scope , $element);
 
-    this.init ();
-
   }
 
-  private init () {
-    this.$scope.sayYourName = () => {
-      this.$log.debug ( 'I´m the AppCtroller');
-    }
+
+  sayYourName () : void {
+    this.$log.debug ( 'I´m the AppCtroller!!');
   }
+
 }
