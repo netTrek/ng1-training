@@ -13,6 +13,7 @@ module app {
             })
             .config( configBlock )
             .value( 'netTrek', 'super' )
+            .constant( 'ifmpt', 4711 )
             /* play */
         ;
 
