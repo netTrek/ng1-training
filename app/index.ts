@@ -4,6 +4,7 @@ import IModule = angular.IModule;
 import {runBlock} from "./index.run";
 import { configBlock } from './index.config';
 import './components/utils/utils.module.ts';
+import { AppController } from './index.controller';
 module app {
 
     var app:IModule = angular.module('app', ['app.utils'] )
@@ -17,9 +18,7 @@ module app {
             .run ( ( version:string, author: string )=>{
                 console.log ( version, author );
             })
-             .controller( 'AppCtrl', ( $scope:angular.IScope, $element:angular.IAugmentedJQuery) => {
-                 console.log ( $scope , $element);
-             })
+            .controller( 'AppCtrl', AppController )
         ;
 
 }
