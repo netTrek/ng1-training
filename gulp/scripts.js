@@ -23,7 +23,7 @@ function webpackWrapper(watch, callback) {
     module: {
       /*preLoaders: [{ test: /\.ts$/, exclude: /node_modules/, loader: 'tslint-loader'}],*/
       /*preLoaders: [{ test: /.ts$/, exclude: /node_modules/, loader: 'tslint'}],*/
-      loaders: [{ test: /\.ts$/, exclude: /node_modules/, loaders: [/*'ng-annotate',*/ 'ts-loader']}]
+      loaders: [{ test: /\.ts$/, exclude: /node_modules/, loaders: ['ng-annotate', 'ts-loader']}]
     },
     output: { filename: 'index.js' }
   };
