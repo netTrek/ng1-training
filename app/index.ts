@@ -17,7 +17,9 @@ module app {
             .run ( ( version:string, author: string )=>{
                 console.log ( version, author );
             })
-            /* play */
+             .controller( 'AppCtrl', ( $scope:angular.IScope, $element:angular.IAugmentedJQuery) => {
+                 console.log ( $scope , $element);
+             })
         ;
 
 }
