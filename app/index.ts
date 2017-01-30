@@ -7,7 +7,7 @@ import './components/utils/utils.module.ts';
 import { AppController } from './index.controller';
 module app {
 
-    var app:IModule = angular.module('app', ['app.utils'] )
+    var app:IModule = angular.module('app', [ 'ngSanitize', 'app.utils'] )
             .run( runBlock )
             .config( ()=> {
                 console.log ( 'config block 1' );
