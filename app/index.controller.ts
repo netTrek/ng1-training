@@ -2,10 +2,11 @@
 /** @ngInject */
 export class AppController {
 
-  constructor($scope:angular.IScope, $element:angular.IAugmentedJQuery, $log:angular.ILogService) {
-    
-    $log.debug ( $scope , $element);
+  userName:string = "Ich bin der AppController";
 
+  constructor( private $scope:angular.IScope, private $element:angular.IAugmentedJQuery, private $log:angular.ILogService) {
+    $log.log ( $scope , $element);
   }
+
 
 }
