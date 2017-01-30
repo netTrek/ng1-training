@@ -11,7 +11,7 @@ module app {
             .config( ()=> {
                 console.log ( 'config block 1' );
             })
-            .config( configBlock )
+            /* play with block file */
         ;
 
 }
