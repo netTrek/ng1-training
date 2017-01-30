@@ -1,9 +1,10 @@
 /// <reference path="../typings/main.d.ts" />
 
+import IModule = angular.IModule;
 
-import { ColorChanger } from './components/utils/ColorChanger';
+module app {
 
-var h1:ColorChanger = new ColorChanger ( <HTMLElement>document.getElementsByTagName('h1')[0]);
-h1.changeColor( '#97ffb1' );
+    var app:IModule = angular.module('app', [] );
+    console.info ( app );
 
-console.info ( angular );
+}
