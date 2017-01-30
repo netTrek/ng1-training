@@ -4,7 +4,10 @@ import IModule = angular.IModule;
 
 module app {
 
-    var app:IModule = angular.module('app', [] );
+    var app:IModule = angular.module('app', [] )
+                             .run( ()=>{
+                                 console.log ( 'run app' );
+                             });
     console.info ( app );
 
 }
