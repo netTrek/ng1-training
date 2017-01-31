@@ -1,4 +1,5 @@
 
+    import ICacheObject = angular.ICacheObject;
     export interface IUserVO {
         id:number;
         firstname:string;
@@ -22,26 +23,40 @@
 
     class UsersService implements IUsersService {
 
-        constructor(private $http:angular.IHttpService, private endpoint:string) {
+        private userCache: ICacheObject;
 
+
+        constructor(private $http:angular.IHttpService,
+                    private $cacheFactory:angular.ICacheFactoryService,
+                    private endpoint:string) {
+            this.userCache = $cacheFactory ('userCache');
         }
 
-        getUser( userID:number ):angular.IHttpPromise<IUserVO> {
+        getUser( userID:number, force:boolean = false ):angular.IHttpPromise<IUserVO> {
+
+            if ( force ) {
+                this.userCache.remove( this.endpoint + userID );
+            }
 
 
             var config = {
 
-                url: this.endpoint.trim().replace( /\/*$/g, '') + '/' + userID,
-                cache: true,
+                url: this.endpoint + userID,
+                cache: this.userCache,
                 method: "GET"
 
             };
 
+            console.log ( this.userCache.info() );
+
             var promise:angular.IHttpPromise<IUserVO> = this.$http ( config );
 
             promise.then (
-                (data:angular.IHttpPromiseCallbackArg<IUserVO> )=> {           //callback 4 success
-                    console.debug ( "** successfull ", config.url, " call with result " , data );
+                (data:any)=> {           //callback 4 success
+                    console.debug ( "** successfull ", this.endpoint, " call with result " , data );
+                    console.log ( this.userCache.info(),
+                        this.userCache,
+                        this.userCache.get (this.endpoint + userID ));
                 },
                 (data)=> {           //callback 4 error
                     console.debug ( "** failure in ", this.endpoint, " call with error" , data );
@@ -112,7 +127,8 @@
         }
 
         /** @ngInject */
-        public $get($http:angular.IHttpService):IUsersService {
-            return new UsersService($http, this.endpoint);
+        $get($http:angular.IHttpService,
+             $cacheFactory:angular.ICacheFactoryService):IUsersService {
+            return new UsersService($http, $cacheFactory, this.endpoint);
         }
     }
