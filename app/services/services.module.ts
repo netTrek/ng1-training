@@ -33,6 +33,6 @@ module app.services {
             }
         })
         .service( '$modelCalc', ModelCalc )
-        //.provider( '$users', UsersServiceProvider )
+        .provider( '$users', UsersServiceProvider )
     ;
 }

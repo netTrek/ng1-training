@@ -14,7 +14,7 @@ export class AppController {
   constructor( private $scope:IDataScope,
                private $element:angular.IAugmentedJQuery,
                private $log:angular.ILogService,
-               /*private $users:IUsersService, */
+               private $users:IUsersService,
                private $tipCalc: IHelpService,
                private $model: IModel
   ) {
@@ -27,14 +27,11 @@ export class AppController {
 
     $model.num1 *= 100;
 
-
-    /*
     $users.getUsers().then( ( result:any )=>{
       this.$log.debug ( result );
       this.$log.debug ( result.data[0] );
       this.$scope.data += (<IUserVO>result.data[0]).firstname;
     });
-    */
 
   }
 
