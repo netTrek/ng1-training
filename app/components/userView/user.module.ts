@@ -1,4 +1,5 @@
 import {IDataScope} from "../../index.controller";
+import { IModel } from '../../services/services.module';
 module app.main {
 
     class UserCtrl {
@@ -8,9 +9,10 @@ module app.main {
 
         constructor( private $scope:IDataScope,
                      private $element:angular.IAugmentedJQuery,
+                     private $model: IModel,
                      private $log:angular.ILogService) {
 
-            $log.debug ( $scope , $element, this.$scope.data );
+            $log.debug ( $scope , $element, this.$scope.data, $model );
 
         }
     }

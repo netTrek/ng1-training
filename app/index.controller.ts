@@ -1,5 +1,6 @@
 import {IUsersService, IUserVO} from "./services/users/users.service";
 import { IHelpService } from './services/help/help.service';
+import { IModel } from './services/services.module';
 export interface IDataScope {
   data?: string;
 }
@@ -14,11 +15,17 @@ export class AppController {
                private $element:angular.IAugmentedJQuery,
                private $log:angular.ILogService,
                /*private $users:IUsersService, */
-               private $tipCalc: IHelpService ) {
+               private $tipCalc: IHelpService,
+               private $model: IModel
+  ) {
 
     $log.debug ( $scope , $element, this.$scope.data );
 
     this.$scope.data = 'let´s go...' + $tipCalc.calcTip( 100 );
+
+    console.info ( $model );
+
+    $model.num1 *= 100;
 
 
     /*
