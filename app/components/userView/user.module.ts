@@ -6,7 +6,9 @@ module app.main {
 
         imgFile:string = '5507692-cat-m.jpg';
 
-        constructor( private $scope:IDataScope, private $element:angular.IAugmentedJQuery, private $log:angular.ILogService) {
+        constructor( private $scope:IDataScope,
+                     private $element:angular.IAugmentedJQuery,
+                     private $log:angular.ILogService) {
 
             $log.debug ( $scope , $element, this.$scope.data );
 

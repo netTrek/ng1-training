@@ -7,7 +7,9 @@ module app.main {
 
         selected:boolean = false;
 
-        constructor( private $scope:IDataScope, private $element:angular.IAugmentedJQuery, private $log:angular.ILogService) {
+        constructor( private $scope:IDataScope,
+                     private $element:angular.IAugmentedJQuery,
+                     private $log:angular.ILogService) {
 
             $log.debug ( $scope , $element, this.$scope.data );
 
