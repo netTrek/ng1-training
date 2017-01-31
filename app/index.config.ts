@@ -7,7 +7,9 @@ export function configBlock ( $tipCalcProvider: IHelpServiceProvider,
                               $usersProvider: IUsersProvider) {
   $tipCalcProvider.setCurrency( '$' );
   $tipCalcProvider.setPercent( 10 );
-  $usersProvider.setEndpoint( 'http://rest-api.flexlab.de/index.php/api/user/' );
+
+  // $httpProvider.defaults.headers.common [ 'If-Modified-Since' ] = 'Sat, 20 Jul 2013 10:10:10 GMT';
+  $usersProvider.setEndpoint( 'mock/users.json?' );
 }
 
 

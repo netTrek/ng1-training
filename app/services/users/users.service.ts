@@ -43,7 +43,10 @@
 
                 url: this.endpoint + userID,
                 cache: this.userCache,
-                method: "GET"
+                method: "GET",
+                headers: {
+                    'If-Modified-Since' : 'Tue, 31 Jan 2017 23:19:53 GMT'  //Sat, 20 Jul 2013 12:19:09 GMT
+                }
 
             };
 
