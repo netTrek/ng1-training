@@ -8,11 +8,12 @@ import { AppController } from './index.controller';
 import './components/utils/utils.module.ts';
 import './components/mainView/main.module.ts'
 import './components/userView/user.module.ts'
+import './services/services.module.ts'
 
 
 module app {
 
-    var app:IModule = angular.module('app', [ 'ngSanitize', 'app.utils', 'app.main', 'app.user'] )
+    var app:IModule = angular.module('app', [ 'ngSanitize', 'app.utils', 'app.main', 'app.user', 'app.services'] )
             .run( runBlock )
             .config( ()=> {
                 console.log ( 'config block 1' );

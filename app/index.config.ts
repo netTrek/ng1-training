@@ -1,6 +1,7 @@
 
+import {IUsersProvider} from "./services/users/users.service";
 /** @ngInject */
-export function configBlock ($httpProvider: angular.IHttpProvider, $logProvider:angular.ILogProvider ) {
-  $logProvider.debugEnabled( true );
-  console.log ( 'config block 2' );
+export function configBlock ($httpProvider: angular.IHttpProvider, $usersProvider: IUsersProvider) {
+  $usersProvider.setEndpoint( 'mock/users.json' );
+  console.log ( 'LegacyPromiseExtensions deaktiviert' );
 }
