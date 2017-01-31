@@ -23,7 +23,11 @@
 
         <section ng-controller="UserCtrl as userCtrl">
             <user-header></user-header>
-            <user-name user="userCtrl.user"></user-name>
+            <user-name user="userCtrl.user">
+                <hr>
+                    <strong>transcluded</strong>
+                <hr>
+            </user-name>
             <user-name-iso firstname="userCtrl.user.firstname"></user-name-iso>
         </section>
 
