@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>init</title>
     <link rel="stylesheet" href="style/index.css">
 </head>
-<body ng-controller="AppCtrl as appCtrl">
+<body ng-app="app">
 
-    <header >
-        <h1 ng-bind="appCtrl.userName"></h1>
+    <main ng-controller="AppCtrl as ctrl">
+
+        <ul>
+            <li>res</li>
+            <li ng-repeat="name in ctrl.list">{{name}}</li>
+        </ul>
+
+        <header ng-click="ctrl.clickHandler()">
+            <span ng-bind-html="ctrl.eigenschaft"></span>
+        </header>
+
+
+
+        <input type="number" ng-model="foo">
+        <input type="number" ng-model="ba">
         <p>
-            <input type="text" ng-model="data">
+            {{foo+ba}}
+            <hr>
+            {{1+1}}
+            <hr>
+            <span ng-bind-html="::ctrl.sayHello()"></span>
         </p>
-    </header>
-
-    <main ng-controller="MainCtrl as mainCtrl">
-
-        <h3>main</h3>
-        <input type="text" ng-model="data">
-
-        <section ng-controller="UserCtrl as userCtrl">
-            <h3>User</h3>
-            <input type="text" ng-model="data">
-        </section>
 
     </main>
-
 
     <script src="libs/angular/angular.js"></script>
     <script src="libs/angular-sanitize/angular-sanitize.js"></script>
