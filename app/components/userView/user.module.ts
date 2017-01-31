@@ -1,6 +1,7 @@
 import {IDataScope} from "../../index.controller";
 import { userHeader } from './userHeader.component';
 import { userName } from './userName.component';
+import { userNameIso } from './userNameIso.component';
 
 
 export interface IUserVO {
@@ -33,5 +34,6 @@ module app.main {
         .controller( 'UserCtrl', UserCtrl )
         .component( 'userHeader', userHeader() )
         .component( 'userName', userName() )
+        .component( 'userNameIso', userNameIso() )
     ;
 }
