@@ -1,9 +1,27 @@
 /// <reference path="../typings/main.d.ts" />
+import { runBlock } from './app.run';
+import { configBlock } from './app.config';
 
+import './component/utils/version.module'
+import IScope = angular.IScope;
+import { AppCtrl } from './AppCtrl';
 
-import { ColorChanger } from './components/utils/ColorChanger';
+export interface IAppScope extends IScope {
+    eigenschaft?: string;
+    clickHandler: Function;
+}
 
-var h1:ColorChanger = new ColorChanger ( <HTMLElement>document.getElementsByTagName('h1')[0]);
-h1.changeColor( '#97ffb1' );
+module app {
 
-console.info ( angular );
+    import IScope = angular.IScope;
+    import IAugmentedJQuery = angular.IAugmentedJQuery;
+    let appModule: angular.IModule = angular.module( 'app', ['ngSanitize', 'app.version'] )
+        .config( configBlock)
+        .run( runBlock )
+        .controller('AppCtrl', AppCtrl )
+    ;
+    //console.log ( appModule );
+    //console.log ( appModule === angular.module( 'app' ) );
+
+}
+

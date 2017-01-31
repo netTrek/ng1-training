@@ -5,9 +5,35 @@
     <title>init</title>
     <link rel="stylesheet" href="style/index.css">
 </head>
-<body>
-    <header><h1>Hello World</h1></header>
+<body ng-app="app">
+
+    <main ng-controller="AppCtrl as ctrl">
+
+        <ul>
+            <li>res</li>
+            <li ng-repeat="name in ctrl.list">{{name}}</li>
+        </ul>
+
+        <header ng-click="ctrl.clickHandler()">
+            <span ng-bind-html="ctrl.eigenschaft"></span>
+        </header>
+
+
+
+        <input type="number" ng-model="foo">
+        <input type="number" ng-model="ba">
+        <p>
+            {{foo+ba}}
+            <hr>
+            {{1+1}}
+            <hr>
+            <span ng-bind-html="::ctrl.sayHello()"></span>
+        </p>
+
+    </main>
+
     <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-sanitize/angular-sanitize.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
