@@ -37,6 +37,7 @@ export class AppController {
 
     */
 
+    /*
     $users.createUser (
         <IUserVO>{
           "firstname": "Saban - " + Date.now(),
@@ -51,6 +52,19 @@ export class AppController {
       this.user = result.data;
     });
 
+    */
+
+    this.getFirstUser ();
+
+
+  }
+
+
+  getFirstUser () : void {
+
+    this.$users.getUser( 1 ).then( ( result:angular.IHttpPromiseCallbackArg<IUserVO> )=>{
+      this.user = result.data;
+    });
   }
 
   sayYourName () : void {

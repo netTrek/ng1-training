@@ -16,6 +16,7 @@
 
     export interface IUsersService {
         getUsers():angular.IHttpPromise<Array<IUserVO>>;
+        getUser( userID:number ):angular.IHttpPromise<IUserVO>;
         createUser( user:IUserVO ):angular.IHttpPromise<IUserVO>;
     }
 
@@ -23,6 +24,31 @@
 
         constructor(private $http:angular.IHttpService, private endpoint:string) {
 
+        }
+
+        getUser( userID:number ):angular.IHttpPromise<IUserVO> {
+
+
+            var config = {
+
+                url: this.endpoint.trim().replace( /\/*$/g, '') + '/' + userID,
+                cache: true,
+                method: "GET"
+
+            };
+
+            var promise:angular.IHttpPromise<IUserVO> = this.$http ( config );
+
+            promise.then (
+                (data:angular.IHttpPromiseCallbackArg<IUserVO> )=> {           //callback 4 success
+                    console.debug ( "** successfull ", config.url, " call with result " , data );
+                },
+                (data)=> {           //callback 4 error
+                    console.debug ( "** failure in ", this.endpoint, " call with error" , data );
+                }
+            );
+
+            return promise;
         }
 
         createUser( user:IUserVO ):angular.IHttpPromise<IUserVO> {
