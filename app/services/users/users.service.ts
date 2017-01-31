@@ -25,7 +25,27 @@
         }
 
         getUsers():angular.IHttpPromise<Array<IUserVO>> {
-            return this.$http.get(this.endpoint);
+
+            var config = {
+                url: this.endpoint,
+                method: "GET" //default
+
+            };
+            var promise:angular.IHttpPromise<Array<IUserVO>> = this.$http ( config );
+
+            promise.then (
+                (data:any)=> {           //callback 4 success
+                    console.debug ( "** successfull ", this.endpoint, " call with result " , data );
+                },
+                (data)=> {           //callback 4 error
+                    console.debug ( "** failure in ", this.endpoint, " call with error" , data );
+                }
+            );
+
+            return promise;
+
+
+            // return this.$http.get(this.endpoint);
         }
 
     }
