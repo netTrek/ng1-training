@@ -1,5 +1,5 @@
 import {IDataScope} from "../../index.controller";
-import { IModel } from '../../services/services.module';
+import { IModel, IModelCalc } from '../../services/services.module';
 module app.main {
 
     class UserCtrl {
@@ -10,9 +10,10 @@ module app.main {
         constructor( private $scope:IDataScope,
                      private $element:angular.IAugmentedJQuery,
                      private $model: IModel,
+                     private $modelCalc: IModelCalc,
                      private $log:angular.ILogService) {
 
-            $log.debug ( $scope , $element, this.$scope.data, $model );
+            $log.debug ( $scope , $element, this.$scope.data, $model, $modelCalc.sum() );
 
         }
     }

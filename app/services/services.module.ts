@@ -6,6 +6,20 @@ export interface IModel {
     num2: number;
 }
 
+export interface IModelCalc {
+    sum (): number;
+}
+
+/** @ngInject */
+class ModelCalc implements IModelCalc {
+    constructor ( private $model: IModel ) {}
+
+    sum () : number {
+        return this.$model.num1 + this.$model.num2;
+    }
+
+}
+
 module app.services {
 
     import IModule = angular.IModule;
@@ -18,6 +32,7 @@ module app.services {
                 num2: 2
             }
         })
+        .service( '$modelCalc', ModelCalc )
         //.provider( '$users', UsersServiceProvider )
     ;
 }
