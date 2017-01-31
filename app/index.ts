@@ -13,7 +13,7 @@ import './services/services.module.ts'
 
 module app {
 
-    var app:IModule = angular.module('app', [ 'ngSanitize', 'app.utils', 'app.main', 'app.user', 'app.services'] )
+    var app:IModule = angular.module('app', [ 'ngResource', 'ngSanitize', 'app.utils', 'app.main', 'app.user', 'app.services'] )
             .run( runBlock )
             .config( ()=> {
                 console.log ( 'config block 1' );

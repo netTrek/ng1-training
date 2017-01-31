@@ -1,6 +1,9 @@
 import {IUsersService, IUserVO} from "./services/users/users.service";
 import { IHelpService } from './services/help/help.service';
 import { IModel } from './services/services.module';
+import IResource = angular.resource.IResource;
+import IResourceArrayMethod = angular.resource.IResourceArrayMethod;
+import IResourceArray = angular.resource.IResourceArray;
 export interface IDataScope {
   data?: string;
 }
@@ -11,7 +14,9 @@ export class AppController {
   userName:string = "Ich bin der AppController";
   userTemplate = "<h2>Saban Ünlü</h2>";
 
-  private user: IUserVO;
+  user: IUserVO;
+  //users: IResource<IUserVO[]>;
+  users: IResourceArray<IUserVO>;
 
   constructor( private $scope:IDataScope,
                private $element:angular.IAugmentedJQuery,
@@ -52,19 +57,27 @@ export class AppController {
       this.user = result.data;
     });
 
+    this.getFirstUser ();
     */
 
-    this.getFirstUser ();
 
+    this.users = $users.query();
+    this.users.$promise.then( ( result:Array<IUserVO>)=>{
+      $log.debug (result);
+      this.user = result[0];
+    })
 
   }
 
 
   getFirstUser () : void {
 
+    /*
     this.$users.getUser( 1 ).then( ( result:angular.IHttpPromiseCallbackArg<IUserVO> )=>{
       this.user = result.data;
     });
+    */
+
   }
 
   sayYourName () : void {

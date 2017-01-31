@@ -12,7 +12,14 @@
         <p>
             <input type="text" ng-model="data">
         </p>
+
     </header>
+
+    <ul>
+        <li ng-repeat="user in appCtrl.users | limitTo : 3">{{user.firstname}}</li>
+    </ul>
+
+
 
     <button ng-click="appCtrl.getFirstUser()">getFirst</button>
 
@@ -31,6 +38,7 @@
 
     <script src="libs/angular/angular.js"></script>
     <script src="libs/angular-sanitize/angular-sanitize.js"></script>
+    <script src="libs/angular-resource/angular-resource.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
