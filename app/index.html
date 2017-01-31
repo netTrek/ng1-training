@@ -7,19 +7,32 @@
 </head>
 <body ng-controller="AppCtrl as appCtrl">
 
-    <header ng-click="appCtrl.sayYourName()">
-        <h1 ng-bind="::appCtrl.userName"></h1>
-        <p ng-bind-html="::appCtrl.userTemplate"></p>
-        <p ng-bind="appCtrl.userMail()"></p>
-        <p ng-bind-html="appCtrl.getTrustedHTML()"></p>
-        <input type="text" ng-model="appCtrl.userMail" ng-model-options="{getterSetter:true}">
-
-        <input type="number" ng-model="appCtrl.num1" min="0" max="100">
-        <input type="number" ng-model="appCtrl.num2" min="0" max="100">
-
-        <p>{{appCtrl.num1+appCtrl.num2}}</p>
-
+    <header ng-class="appCtrl.myClass">
+        <h1 ng-bind="appCtrl.userName | limitTo : appCtrl.num : appCtrl.ind*appCtrl.num"></h1>
+        <h2>{{appCtrl.ind}}#{{appCtrl.maxInd}}</h2>
+        <input type="number" ng-model="appCtrl.ind" min="0" max="{{appCtrl.maxInd}}">
+        <p>
+            <!--<input type="text" ng-model="data" ng-change="appCtrl.onInputChg($event)" ng-keyup="appCtrl.onKeyUp($event)">-->
+            <input type="text" ng-model="data" ng-change="appCtrl.onInputChg()" >
+        </p>
     </header>
+
+    <main ng-controller="MainCtrl as mainCtrl">
+
+        <h3 ng-class="{active:mainCtrl.selected}">main</h3>
+        <input type="text" ng-model="data" >
+        <input type="checkbox" ng-model="mainCtrl.selected" ng-change="mainCtrl.onSelectionChg()">
+
+        <section ng-controller="UserCtrl as userCtrl">
+            <h3>User</h3>
+            <input type="text" ng-model="data">
+
+            <img ng-src="http://www.cats.org.uk/uploads/branches/211/{{userCtrl.imgFile}}"
+                 alt="" width="25%" ng-if="mainCtrl.selected">
+
+        </section>
+
+    </main>
 
 
     <script src="libs/angular/angular.js"></script>

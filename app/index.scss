@@ -1,12 +1,15 @@
+@import './app.style.variables';
+@import './app.style.mixins';
+
 
 body {
-  background-color: #15ceff;
+  background-color: $appBgColor;
 }
 
-.testing {
-  width: percentage(5/7);
+.active {
+  color: red;
 }
-.super-tes{
-  background-color: #000066;
-  color: #000066;
-}
+
+
+@import "components/mainView/main";
+@import "components/userView/user";

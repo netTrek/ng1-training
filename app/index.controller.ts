@@ -1,38 +1,45 @@
+import IScope = angular.IScope;
+export interface IDataScope extends IScope{
+  data?: string;
+}
 
-import ISCEService = angular.ISCEService;
 /** @ngInject */
 export class AppController {
 
   userName:string = "Ich bin der AppController";
-  userTemplate = "<h3>Saban Ünlü</h3>";
-  num1:number = 0;
-  num2:number = 0;
-  private _userMail: string;
+  userTemplate = "<h2>Saban Ünlü</h2>";
+  myClass: string;
 
-  constructor( private $scope:angular.IScope, private $element:angular.IAugmentedJQuery, private $log:angular.ILogService, private $sce:ISCEService ) {
+  lng: number = this.userName.length;
+  num: number = 5;
+  maxInd: number = Math.floor( this.lng / this.num) - 1
+  ind: number = 0;
 
-    $log.debug ( $scope , $element);
+
+  constructor( private $scope:IDataScope, private $element:angular.IAugmentedJQuery, private $log:angular.ILogService) {
+
+    $log.debug ( $scope , $element, this.$scope.data );
+
+    this.$scope.data = 'let´s go...';
+
 
   }
 
-  userMail ( value?:string ) {
-    if ( value )
-    {
-      this._userMail = value;
-    }
-    else {
-      return this._userMail;
+
+  onKeyUp (event:angular.IAngularEvent) : void {
+    this.$log.debug ( 'up', event );
+  }
+
+  onInputChg () : void {
+    if ( this.$scope.data === 'main' ) {
+      this.myClass = 'active';
+    } else {
+      this.myClass = '';
     }
   }
 
   sayYourName () : void {
     this.$log.debug ( 'I´m the AppCtroller');
   }
-
-  getTrustedHTML (): string {
-    this.$log.debug ('getTrustedHTML');
-    return this.$sce.trustAsHtml( '<strong>cool!</strong>' );
-  }
-
 
 }
