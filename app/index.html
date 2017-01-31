@@ -20,15 +20,9 @@
     <main ng-controller="MainCtrl as mainCtrl">
 
         <h3 ng-class="{active:mainCtrl.selected}">main</h3>
-        <input type="text" ng-model="data" >
-        <input type="checkbox" ng-model="mainCtrl.selected" ng-change="mainCtrl.onSelectionChg()">
 
         <section ng-controller="UserCtrl as userCtrl">
-            <h3>User</h3>
-            <input type="text" ng-model="data">
-
-            <img ng-src="http://www.cats.org.uk/uploads/branches/211/{{userCtrl.imgFile}}"
-                 alt="" width="25%" ng-if="mainCtrl.selected">
+            <user-header></user-header>
 
         </section>
 

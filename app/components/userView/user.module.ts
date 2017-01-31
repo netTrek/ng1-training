@@ -1,4 +1,5 @@
 import {IDataScope} from "../../index.controller";
+import { userHeader } from './userHeader.component';
 module app.main {
 
     class UserCtrl {
@@ -16,5 +17,6 @@ module app.main {
     import IModule = angular.IModule;
     var user:IModule = angular.module('app.user', [] )
         .controller( 'UserCtrl', UserCtrl )
+        .component( 'userHeader', userHeader() )
     ;
 }
