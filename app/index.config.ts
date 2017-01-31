@@ -7,7 +7,7 @@ export function configBlock ( $tipCalcProvider: IHelpServiceProvider,
                               $usersProvider: IUsersProvider) {
   $tipCalcProvider.setCurrency( '$' );
   $tipCalcProvider.setPercent( 10 );
-  $usersProvider.setEndpoint( 'mock/users.json' );
+  $usersProvider.setEndpoint( 'http://rest-api.flexlab.de/index.php/api/user/' );
 }
 
 

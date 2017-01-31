@@ -16,12 +16,39 @@
 
     export interface IUsersService {
         getUsers():angular.IHttpPromise<Array<IUserVO>>;
+        createUser( user:IUserVO ):angular.IHttpPromise<IUserVO>;
     }
 
     class UsersService implements IUsersService {
 
         constructor(private $http:angular.IHttpService, private endpoint:string) {
 
+        }
+
+        createUser( user:IUserVO ):angular.IHttpPromise<IUserVO> {
+
+            var config =
+                    {
+                        url: this.endpoint,
+                        method: "POST",
+                        data: user,
+                        params: {
+                            token: 12345
+                        }
+                    };
+
+            var promise:angular.IHttpPromise<IUserVO> = this.$http ( config );
+
+            promise.then (
+                (data:any)=> {           //callback 4 success
+                    console.debug ( "** successfull ", this.endpoint, " call with result " , data );
+                },
+                (data)=> {           //callback 4 error
+                    console.debug ( "** failure in ", this.endpoint, " call with error" , data );
+                }
+            );
+
+            return promise;
         }
 
         getUsers():angular.IHttpPromise<Array<IUserVO>> {

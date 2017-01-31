@@ -11,6 +11,8 @@ export class AppController {
   userName:string = "Ich bin der AppController";
   userTemplate = "<h2>Saban Ünlü</h2>";
 
+  private user: IUserVO;
+
   constructor( private $scope:IDataScope,
                private $element:angular.IAugmentedJQuery,
                private $log:angular.ILogService,
@@ -26,11 +28,27 @@ export class AppController {
     console.info ( $model );
 
     $model.num1 *= 100;
-
+    /*
     $users.getUsers().then( ( result:any )=>{
       this.$log.debug ( result );
       this.$log.debug ( result.data[0] );
       this.$scope.data += (<IUserVO>result.data[0]).firstname;
+    });
+
+    */
+
+    $users.createUser (
+        <IUserVO>{
+          "firstname": "Saban - " + Date.now(),
+          "lastname": "netTrek - " + Date.now(),
+          "birthday": "1975-11-11",
+          "street": null,
+          "street_no": null,
+          "zip": null,
+          "city": null
+        }
+    ).then( ( result:angular.IHttpPromiseCallbackArg<IUserVO> )=>{
+      this.user = result.data;
     });
 
   }
