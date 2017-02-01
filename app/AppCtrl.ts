@@ -1,6 +1,7 @@
 import { IAppScope } from './index';
 import IAugmentedJQuery = angular.IAugmentedJQuery;
 import { IHelpService } from './services/help/help.service';
+import { IModelService, IModelCalcService } from './services/services.module';
 
 export interface IUSerVo {
     name: string;
@@ -47,13 +48,19 @@ export class AppCtrl {
 
     constructor ( $scope: IAppScope,
                   private $element: IAugmentedJQuery,
+                  private $model: IModelService,
+                  private $modeCalc: IModelCalcService,
                   private $help: IHelpService
         ) {
 
 
         console.log ( 'myAppCtrl' , $scope, $element );
 
-        console.log( $help, $help.calcTip( 100 ) );
+        console.log( $help, $help.calcTip( 100 ), $model, $model.num1 );
+
+        console.info ( $modeCalc.sum() );
+        
+        $model.num1 *= 100;
 
     }
 

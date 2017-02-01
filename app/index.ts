@@ -3,6 +3,7 @@ import { runBlock } from './app.run';
 import { configBlock } from './app.config';
 
 import './component/utils/version.module'
+import './component/main/main.module'
 import './services/services.module'
 
 import IScope = angular.IScope;
@@ -18,7 +19,7 @@ module app {
     import IScope = angular.IScope;
     import IAugmentedJQuery = angular.IAugmentedJQuery;
     let appModule: angular.IModule = angular.module( 'app',
-        ['ngSanitize', 'app.version', 'app.service'] )
+        ['ngSanitize', 'app.version', 'app.service', 'app.module'] )
         .config( configBlock)
         .run( runBlock )
         .controller('AppCtrl', AppCtrl )

@@ -1,4 +1,5 @@
 import IServiceProvider = angular.IServiceProvider;
+import ILogService = angular.ILogService;
 /**
  * Created by suenlue on 01.02.17.
  */
@@ -36,7 +37,8 @@ export class HelpServiceProvider implements IHelpServiceProvider {
     }
 
     /** @ngInject */
-    $get () : any {
+    $get ( $log: ILogService ) : any {
+        $log.debug( 'create singleton og HelpService ');
         return new HelpService( this.currency, this.percent );
     }
 
