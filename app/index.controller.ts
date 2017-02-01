@@ -24,7 +24,8 @@ export class AppController {
                private $log:angular.ILogService,
                private $users:IUsersService,
                private $tipCalc: IHelpService,
-               private $model: IModel
+               private $model: IModel,
+               uppercaseFilter:angular.IFilterUppercase
   ) {
 
     $log.debug ( $scope , $element, this.$scope.data );
@@ -44,7 +45,7 @@ export class AppController {
       console.log ( 'app', payload, event );
     });
 
-    this.$scope.data = 'let´s go...' + $tipCalc.calcTip( 100 );
+    this.$scope.data = uppercaseFilter( 'let´s go...' + $tipCalc.calcTip( 100 ));
 
     console.info ( $model );
 
