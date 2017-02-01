@@ -1,4 +1,5 @@
 import {IDataScope} from "../../index.controller";
+import { mainView } from './mainView.component';
 module app.main {
 
 
@@ -22,5 +23,6 @@ module app.main {
     import IModule = angular.IModule;
     var main:IModule = angular.module('app.main', [] )
         .controller( 'MainCtrl', MainCtrl )
+        .component('mainView', mainView() )
     ;
 }

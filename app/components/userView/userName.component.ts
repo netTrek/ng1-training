@@ -3,6 +3,7 @@
 
 
 import { IUserVO } from './user.module';
+import { MainCtrl } from '../mainView/mainView.component';
 export function userName(): angular.IComponentOptions {
 
     return {
@@ -34,7 +35,8 @@ export function userName(): angular.IComponentOptions {
         bindings: {
             user: '='  // bi-dir ohne {{}}
             // user: '@' // bi-dir mit {{}}
-        }
+        },
+        require: { mainCtrl: '^mainView' }
     };
 
 }
@@ -45,8 +47,14 @@ export function userName(): angular.IComponentOptions {
 export class UserNameCtrl {
 
     user:IUserVO;
+    mainCtrl: MainCtrl;
 
     constructor( private $log: angular.ILogService, private $scope: angular.IScope) {
         $log.debug ('UserNameCtrl', this.user );
+    }
+
+
+    $onInit  (): void {
+        this.$log.debug ( 'UserCtrl init', this.mainCtrl, this );
     }
 }
