@@ -25,7 +25,7 @@
     export interface IUsersService {
         query(): IResourceArray<IUserVO>;
         getUsers():IResourceArray<IUserVO>;
-        getUser( userID:number ):IResource<IUserVO>;
+        getUser( params: {user_id:number} ):IResource<IUserVO>;
         createUser( user:IUserVO ):IResource<IUserVO>;
     }
 

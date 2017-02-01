@@ -14,8 +14,8 @@ export class AppController {
   userName:string = "Ich bin der AppController";
   userTemplate = "<h2>Saban Ünlü</h2>";
 
-  user: IUserVO;
   //users: IResource<IUserVO[]>;
+  user: IResource<IUserVO>;
   users: IResourceArray<IUserVO>;
 
   constructor( private $scope:IDataScope,
@@ -57,14 +57,12 @@ export class AppController {
       this.user = result.data;
     });
 
-    this.getFirstUser ();
     */
-
 
     this.users = $users.query();
     this.users.$promise.then( ( result:Array<IUserVO>)=>{
       $log.debug (result);
-      this.user = result[0];
+      this.user = <any>result[1];
     })
 
   }
@@ -72,11 +70,7 @@ export class AppController {
 
   getFirstUser () : void {
 
-    /*
-    this.$users.getUser( 1 ).then( ( result:angular.IHttpPromiseCallbackArg<IUserVO> )=>{
-      this.user = result.data;
-    });
-    */
+    this.user = this.$users.getUser ( {user_id:1} );
 
   }
 
