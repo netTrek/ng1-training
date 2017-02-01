@@ -8,11 +8,11 @@
     <style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
 
 </head>
-<body ng-app="app">
+<body ng-app="app" ng-controller="AppCtrl as ctrl">
 
 
 
-    <main ng-controller="AppCtrl as ctrl"
+    <main ng-controller="MainCtrl as mainCtrl"
           ng-mouseenter="ctrl.enter( $event, 123, true, 'saban' )"
           ng-mouseleave="ctrl.leave( $event, 456 )"
           class="red"
