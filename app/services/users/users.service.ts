@@ -26,7 +26,7 @@
         query(): IResourceArray<IUserVO>;
         getUsers():IResourceArray<IUserVO>;
         getUser( params: {user_id:number} ):IResource<IUserVO>;
-        createUser( user:IUserVO ):IResource<IUserVO>;
+        createUser( user:IUserVO, success?: Function, error?: Function ):IResource<IUserVO>;
     }
 
     export class UsersServiceProvider implements IUsersProvider {

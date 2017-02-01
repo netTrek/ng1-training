@@ -16,7 +16,7 @@
     </header>
 
     <ul>
-        <li ng-repeat="user in appCtrl.users | limitTo : 3">{{user.firstname}}</li>
+        <li ng-repeat="user in appCtrl.users | limitTo : -3">{{user.firstname}}</li>
     </ul>
 
 

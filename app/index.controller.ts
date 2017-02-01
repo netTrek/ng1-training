@@ -58,12 +58,32 @@ export class AppController {
     });
 
     */
+    $users.createUser (
+        <IUserVO>{
+          "firstname": "Saban - " + Date.now(),
+          "lastname": "netTrek - " + Date.now(),
+          "birthday": "1975-11-11",
+          "street": null,
+          "street_no": null,
+          "zip": null,
+          "city": null
+        },
+        ( data )=> {
+          this.user = data;
+          this.users = $users.query();
+        },
+        ( data )=> {
+          console.log ( data );
+        });
 
-    this.users = $users.query();
+
+    /*
+     this.users = $users.query();
     this.users.$promise.then( ( result:Array<IUserVO>)=>{
       $log.debug (result);
       this.user = <any>result[1];
     })
+    */
 
   }
 
