@@ -4,26 +4,60 @@
     <meta charset="UTF-8">
     <title>init</title>
     <link rel="stylesheet" href="style/index.css">
+
+    <style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+
 </head>
 <body ng-app="app">
 
-    <main ng-controller="AppCtrl as ctrl">
+    <main ng-controller="AppCtrl as ctrl"
+          ng-mouseenter="ctrl.enter( $event, 123, true, 'saban' )"
+          ng-mouseleave="ctrl.leave( $event, 456 )"
+          class="red"
+          ng-class="ctrl.className"
+            >
 
-        <ul>
-            <li>res</li>
-            <li ng-repeat="name in ctrl.list">{{name}}</li>
+        <ul ng-show="ctrl.foo===300">
+            <li ng-cloak>{{ctrl.eigenschaft}}</li>
         </ul>
 
-        <header ng-click="ctrl.clickHandler()">
-            <span ng-bind-html="ctrl.eigenschaft"></span>
+        <header ng-if="ctrl.foo>0"
+                ng-click="ctrl.clickHandler()"
+                ng-switch="ctrl.foo"
+            >
+
+            <span ng-switch-when="300" ng-bind-html="ctrl.eigenschaft"></span>
+
+            <span ng-switch-when="299">299</span>
+            <span ng-switch-when="301">301</span>
+            <span ng-switch-default>default</span>
+
+
         </header>
 
+        <img src="http://www.planet-wissen.de/sendungen/katzen-zwei-junge-100~_v-gseapremiumxl.jpg" alt="katze"
+             style="width: 50%"
+        >
+
+        <img ng-src="http://{{ctrl.imgBase}}{{ctrl.imgUrl}}" alt="katze"
+             style="width: 50%"
+        >
+
+        <a ng-href="{{ctrl.link}}">netTrek</a>
 
 
-        <input type="number" ng-model="foo">
-        <input type="number" ng-model="ba">
+        <input type="number"
+               ng-model="ctrl.foo"
+               ng-change="ctrl.chg ()"
+               ng-style="{'width': ctrl.foo+'px'}"
+        >
+        <input type="number" ng-model="ctrl.ba">
         <p>
-            {{foo+ba}}
+            <span ng-bind="'summe:= ' + (ctrl.foo+ctrl.ba) "></span>
+            <hr>
+            Summe := <strong>{{ctrl.foo+ctrl.ba}}</strong>
+            <hr>
+            {{ctrl.foo+ctrl.ba}}
             <hr>
             {{1+1}}
             <hr>
@@ -34,6 +68,7 @@
 
     <script src="libs/angular/angular.js"></script>
     <script src="libs/angular-sanitize/angular-sanitize.js"></script>
+
     <script src="js/index.js"></script>
 </body>
 </html>

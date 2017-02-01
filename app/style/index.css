@@ -7,3 +7,10 @@ body {
 .super-tes {
   background-color: #000066;
   color: #000066; }
+
+main {
+  background-color: aqua; }
+  main.red {
+    background-color: red; }
+  main.yellow {
+    background-color: yellow; }
