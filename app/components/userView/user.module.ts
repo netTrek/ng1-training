@@ -15,6 +15,12 @@ module app.main {
 
             $log.debug ( $scope , $element, this.$scope.data, $model, $modelCalc.sum() );
 
+
+
+            this.$scope.$on('userChg', (event:angular.IAngularEvent)=>{
+                console.log ( 'user', event );
+            });
+
         }
     }
 

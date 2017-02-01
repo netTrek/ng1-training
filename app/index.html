@@ -16,7 +16,7 @@
     </header>
 
     <ul>
-        <li ng-repeat="user in appCtrl.users | limitTo : -3">{{user.firstname}}</li>
+        <li ng-repeat="user in appCtrl.users | limitTo : 3">{{user.firstname}}</li>
     </ul>
 
 
@@ -28,6 +28,7 @@
 
         <h3>main</h3>
         <input type="text" ng-model="data">
+        <input type="checkbox" ng-model="mainCtrl.selected" ng-change="mainCtrl.onSelectionChg()">
 
         <section ng-controller="UserCtrl as userCtrl">
             <h3>User</h3>

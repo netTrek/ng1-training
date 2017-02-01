@@ -4,7 +4,8 @@ import { IModel } from './services/services.module';
 import IResource = angular.resource.IResource;
 import IResourceArrayMethod = angular.resource.IResourceArrayMethod;
 import IResourceArray = angular.resource.IResourceArray;
-export interface IDataScope {
+import IScope = angular.IScope;
+export interface IDataScope extends IScope {
   data?: string;
 }
 
@@ -27,6 +28,11 @@ export class AppController {
   ) {
 
     $log.debug ( $scope , $element, this.$scope.data );
+
+
+    this.$scope.$on('userChg', (event:angular.IAngularEvent)=>{
+      console.log ( 'app', event );
+    });
 
     this.$scope.data = 'let´s go...' + $tipCalc.calcTip( 100 );
 
@@ -58,6 +64,8 @@ export class AppController {
     });
 
     */
+
+    /*
     $users.createUser (
         <IUserVO>{
           "firstname": "Saban - " + Date.now(),
@@ -71,18 +79,20 @@ export class AppController {
         ( data )=> {
           this.user = data;
           this.users = $users.query();
-          /*
+          /!*
           (<any>this.user).firstname += 'updated';
           this.user.$save( ()=>{
             this.users = $users.query();
           });
-          */
+          *!/
         },
         ( data )=> {
           console.log ( data );
         });
+    */
 
-
+   this.users = $users.query();
+   this.getFirstUser();
     /*
      this.users = $users.query();
     this.users.$promise.then( ( result:Array<IUserVO>)=>{

@@ -13,11 +13,24 @@ module app.main {
 
             $log.debug ( $scope , $element, this.$scope.data );
 
+
+
+            this.$scope.$on('userChg', (event:angular.IAngularEvent)=>{
+                console.log ( 'main', event );
+            });
+
         }
 
 
         onSelectionChg () : void {
             this.$log.debug ( this.selected );
+            if ( this.selected ) {
+                console.info ( 'emit' );
+                this.$scope.$emit( 'userChg', {data:true} );
+            } else {
+                console.info ( 'broadcast' );
+                this.$scope.$broadcast( 'userChg', {data:true} );
+            }
         }
     }
 
