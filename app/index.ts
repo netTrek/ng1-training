@@ -9,11 +9,12 @@ import './components/utils/utils.module.ts';
 import './components/mainView/main.module.ts'
 import './components/userView/user.module.ts'
 import './services/services.module.ts'
+import './filter/filters.module.ts'
 
 
 module app {
 
-    var app:IModule = angular.module('app', [ 'ngResource', 'ngSanitize', 'app.utils', 'app.main', 'app.user', 'app.services'] )
+    var app:IModule = angular.module('app', [ 'ngResource', 'ngSanitize', 'app.utils', 'app.main', 'app.user', 'app.services', 'app.filters'] )
             .run( runBlock )
             .config( ()=> {
                 console.log ( 'config block 1' );
