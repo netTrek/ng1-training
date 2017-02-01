@@ -15,21 +15,21 @@ module app.main {
 
 
 
-            this.$scope.$on('userChg', (event:angular.IAngularEvent)=>{
-                console.log ( 'main', event );
+            this.$scope.$on('userChg', (event:angular.IAngularEvent, payload:any )=>{
+                console.log ( 'main', payload, event );
             });
 
         }
 
 
         onSelectionChg () : void {
-            this.$log.debug ( this.selected );
+            //this.$log.debug ( this.selected );
             if ( this.selected ) {
                 console.info ( 'emit' );
-                this.$scope.$emit( 'userChg', {data:true} );
+                this.$scope.$emit( 'userChg', {data:this.selected} );
             } else {
                 console.info ( 'broadcast' );
-                this.$scope.$broadcast( 'userChg', {data:true} );
+                this.$scope.$broadcast( 'userChg', {data:this.selected} );
             }
         }
     }

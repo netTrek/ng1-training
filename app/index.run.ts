@@ -6,7 +6,7 @@ export function runBlock( $log: angular.ILogService,
                           $rootScope: IRootScopeService ) {
   $log.debug('run app', netTrek, ifmpt );
 
-  $rootScope.$on('userChg', (event:angular.IAngularEvent)=>{
-    console.log ( '$rootScope', event );
+  $rootScope.$on('userChg', (event:angular.IAngularEvent, payload: any )=>{
+    console.log ( '$rootScope', payload, event );
   });
 }

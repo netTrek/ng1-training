@@ -30,8 +30,8 @@ export class AppController {
     $log.debug ( $scope , $element, this.$scope.data );
 
 
-    this.$scope.$on('userChg', (event:angular.IAngularEvent)=>{
-      console.log ( 'app', event );
+    this.$scope.$on('userChg', (event:angular.IAngularEvent, payload: any)=>{
+      console.log ( 'app', payload, event );
     });
 
     this.$scope.data = 'let´s go...' + $tipCalc.calcTip( 100 );

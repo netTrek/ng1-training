@@ -17,8 +17,8 @@ module app.main {
 
 
 
-            this.$scope.$on('userChg', (event:angular.IAngularEvent)=>{
-                console.log ( 'user', event );
+            this.$scope.$on('userChg', (event:angular.IAngularEvent, payload: any)=>{
+                console.log ( 'user', payload, event );
             });
 
         }
