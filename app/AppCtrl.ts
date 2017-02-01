@@ -1,5 +1,6 @@
 import { IAppScope } from './index';
 import IAugmentedJQuery = angular.IAugmentedJQuery;
+import { IHelpService } from './services/help/help.service';
 
 export interface IUSerVo {
     name: string;
@@ -45,8 +46,15 @@ export class AppCtrl {
     ];
 
     constructor ( $scope: IAppScope,
-                  private $element: IAugmentedJQuery ) {
+                  private $element: IAugmentedJQuery,
+                  private $help: IHelpService
+        ) {
+
+
         console.log ( 'myAppCtrl' , $scope, $element );
+
+        console.log( $help, $help.calcTip( 100 ) );
+
     }
 
     getClassForRow ( even: boolean ) {

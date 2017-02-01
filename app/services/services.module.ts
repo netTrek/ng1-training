@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {UsersServiceProvider} from "./users/users.service";
 import { HelpServiceProvider } from './help/help.service';
 
@@ -36,3 +37,16 @@ module app.services {
         .provider( '$users', UsersServiceProvider )
     ;
 }
+=======
+
+
+import { HelpServiceProvider } from './help/help.service';
+module app.services {
+
+    import IModule = angular.IModule;
+    let serviceModule : IModule = angular.module( 'app.service', [] )
+            .provider( '$help', HelpServiceProvider )
+        ;
+
+}
+>>>>>>> service with provider
