@@ -29,6 +29,16 @@ export class AppController {
 
     $log.debug ( $scope , $element, this.$scope.data );
 
+    let count: number = 0;
+    /*
+    this.$scope.$watch( 'appCtrl.user',
+      */
+    this.$scope.$watch( ()=>{
+      return this.user },
+     ( newValue:any, oldValue:any, scope:IDataScope)=>{
+      this.$log.debug ( 'appCtrl.user new', newValue, 'old', oldValue, 'scope', scope );
+    });
+
 
     this.$scope.$on('userChg', (event:angular.IAngularEvent, payload: any)=>{
       console.log ( 'app', payload, event );
