@@ -14,9 +14,18 @@ body {
 main {
   background-color: aqua;
   &.red {
-    background-color: red;
+    //background-color: red;
   }
   &.yellow {
-    background-color: yellow;
+    //background-color: yellow;
+  }
+}
+
+li {
+  &.even {
+    background-color: #ffe31b;
+  }
+  &.odd {
+    background-color: #99acbe;
   }
 }

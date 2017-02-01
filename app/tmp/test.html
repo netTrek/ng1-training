@@ -1,0 +1,23 @@
+<ul>
+    <li ng-repeat="name in ctrl.list">
+        {{ name | limitTo : -3 | uppercase }}
+    </li>
+    <li ng-repeat="user in ctrl.userList | orderBy : 'age' : true"
+        ng-click="ctrl.delUsr( user )"
+        ng-class-even="'even'"
+        ng-class-odd="'odd'"
+    >
+        <!--
+        ng-class="ctrl.getClassForRow($even)"
+        -->
+        {{user.name}} - {{user.age}}
+        <!--ul>
+            <li>{{$index}}</li>
+            <li>{{$first}}</li>
+            <li>{{$middle}}</li>
+            <li>{{$last}}</li>
+            <li>{{$even}}</li>
+            <li>{{$odd}}</li>
+        </ul-->
+    </li>
+</ul>

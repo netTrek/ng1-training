@@ -1,5 +1,11 @@
 import { IAppScope } from './index';
 import IAugmentedJQuery = angular.IAugmentedJQuery;
+
+export interface IUSerVo {
+    name: string;
+    age: number;
+}
+
 /** @ngInject */
 export class AppCtrl {
 
@@ -17,10 +23,43 @@ export class AppCtrl {
     link: string = 'http://netTrek.de';
 
     list: string[] = ['saban','hans','peter'];
+    userList: IUSerVo[] = [
+        {
+            age: 12,
+            name: 'hans'
+        },
+        {
+            age: 13,
+            name: 'peter'
+        },
+        {
+            age: 14,
+            name: 'klaus'
+        },
+        {
+            age: 15,
+            name: 'frank'
+        }
+    ];
 
     constructor ( $scope: IAppScope,
                   private $element: IAugmentedJQuery ) {
         console.log ( 'myAppCtrl' , $scope, $element );
+    }
+
+    getClassForRow ( even: boolean ) {
+        if ( even ) {
+            return 'even';
+        }
+        return 'odd';
+    }
+
+    delUsr ( usr: IUSerVo ) {
+        this.delUsrByInd ( this.userList.indexOf( usr ) );
+    }
+
+    delUsrByInd ( ind: number ) {
+        this.userList.splice( ind, 1 );
     }
 
     out ( mEvt?: MouseEvent ) {
