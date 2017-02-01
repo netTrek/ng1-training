@@ -15,7 +15,9 @@ module app.main {
 
             $log.debug ( $scope , $element, this.$scope.data, $model, $modelCalc.sum() );
 
-
+            this.$scope.$on('$destroy', () => {
+                console.info ( 'destroy' );
+            });
 
             this.removeListener = this.$scope.$on('userChg', (event:angular.IAngularEvent, payload: any)=>{
                 console.log ( 'user', payload, event );

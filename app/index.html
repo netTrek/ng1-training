@@ -29,7 +29,7 @@
         <h3>main</h3>
         <input type="text" ng-model="data">
         <input type="checkbox" ng-model="mainCtrl.selected" ng-change="mainCtrl.onSelectionChg()">
-
+        <button ng-click="$destroy()">destroy</button>
         <section ng-controller="UserCtrl as userCtrl">
             <h3>User</h3>
             <input type="text" ng-model="data">
