@@ -20,6 +20,10 @@ export class UserNameIsoCtrl {
     firstname:string;
 
     constructor( private $log: angular.ILogService, private $scope: angular.IScope) {
-        $log.debug ('UserNameIsoCtrl', this.firstname );
+        $log.debug ('UserNameIsoCtrl');
+    }
+
+    $onInit () {
+        this.$log.debug ('UserNameIsoCtrl init', this.firstname);
     }
 }

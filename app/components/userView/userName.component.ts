@@ -55,6 +55,18 @@ export class UserNameCtrl {
 
 
     $onInit  (): void {
-        this.$log.debug ( 'UserCtrl init', this.mainCtrl, this );
+        this.$log.debug ( 'UserNameCtrl init', this.mainCtrl, this );
     }
+
+    $postLink () {
+        this.$log.debug ('UserNameCtrl postLink - all childs comp' );
+    };
+
+    $onChanges ( changesObj ) {
+        this.$log.debug ('UserNameCtrl $onChanges oneWay Binding Update', changesObj );
+    };
+
+    $onDestroy () {
+        this.$log.debug ('UserNameCtrl $onDestroy()' );
+    };
 }
