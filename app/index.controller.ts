@@ -71,6 +71,12 @@ export class AppController {
         ( data )=> {
           this.user = data;
           this.users = $users.query();
+          /*
+          (<any>this.user).firstname += 'updated';
+          this.user.$save( ()=>{
+            this.users = $users.query();
+          });
+          */
         },
         ( data )=> {
           console.log ( data );
