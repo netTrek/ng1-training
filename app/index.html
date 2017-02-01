@@ -10,6 +10,8 @@
 </head>
 <body ng-app="app">
 
+
+
     <main ng-controller="AppCtrl as ctrl"
           ng-mouseenter="ctrl.enter( $event, 123, true, 'saban' )"
           ng-mouseleave="ctrl.leave( $event, 456 )"
@@ -17,9 +19,25 @@
           ng-class="ctrl.className"
             >
 
+        <!--
         <ul ng-show="ctrl.foo===300">
             <li ng-cloak>{{ctrl.eigenschaft}}</li>
         </ul>
+        -->
+
+        <p>
+            {{1485948725799 | date : 'fullDate' }}
+            <br>
+            {{1485948725799 | date : 'HH:mm' }}
+            <br>
+            {{1485948725799 | number}}
+            <br>
+            {{1485948725799 | currency : '€'  }}
+        </p>
+
+        <span ng-include="'myTmp'"></span>
+        <span ng-include="'tmp/test.html'"></span>
+
 
         <header ng-if="ctrl.foo>0"
                 ng-click="ctrl.clickHandler()"
@@ -66,7 +84,12 @@
 
     </main>
 
+    <script type="text/ng-template" id="myTmp">
+        <strong>Hello from myTMP</strong>
+    </script>
+
     <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-i18n/angular-locale_de-de.js"></script>
     <script src="libs/angular-sanitize/angular-sanitize.js"></script>
 
     <script src="js/index.js"></script>

@@ -10,7 +10,9 @@ body {
 
 main {
   background-color: aqua; }
-  main.red {
-    background-color: red; }
-  main.yellow {
-    background-color: yellow; }
+
+li.even {
+  background-color: #ffe31b; }
+
+li.odd {
+  background-color: #99acbe; }
