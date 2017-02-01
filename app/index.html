@@ -7,12 +7,30 @@
 </head>
 <body ng-controller="AppCtrl as appCtrl">
 
+
+
+
     <header >
         <h1 ng-bind="appCtrl.userName"></h1>
         <p>
             <input type="text" ng-model="data">
         </p>
     </header>
+<!--
+    {{appCtrl.userList}}
+-->
+
+    <p>
+        selected user := {{appCtrl.user.firstname}} {{appCtrl.user.lastname}}
+    </p>
+
+    <button ng-click="appCtrl.getFirstUser()">reload selected user</button>
+
+    <ul>
+        <li ng-repeat="user in appCtrl.userList | limitTo : -3 ">
+            {{user.id}} # {{user.firstname}}
+        </li>
+    </ul>
 
     <main ng-controller="MainCtrl as mainCtrl">
 
