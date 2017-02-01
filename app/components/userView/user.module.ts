@@ -4,7 +4,7 @@ module app.main {
 
     class UserCtrl {
 
-
+        private removeListener: Function;
         imgFile:string = '5507692-cat-m.jpg';
 
         constructor( private $scope:IDataScope,
@@ -17,8 +17,11 @@ module app.main {
 
 
 
-            this.$scope.$on('userChg', (event:angular.IAngularEvent, payload: any)=>{
+            this.removeListener = this.$scope.$on('userChg', (event:angular.IAngularEvent, payload: any)=>{
                 console.log ( 'user', payload, event );
+                if ( !payload.data ) {
+                    this.removeListener ();
+                }
             });
 
         }
