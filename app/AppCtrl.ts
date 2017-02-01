@@ -17,6 +17,8 @@ export class AppCtrl {
     ba: number = 300;
     className: string = 'red';
 
+    search: IUSerVo;
+
     imgBase: string = 'www.planet-wissen.de/sendungen/'
     imgUrl: string = 'katzen-zwei-junge-100~_v-gseapremiumxl.jpg';
 

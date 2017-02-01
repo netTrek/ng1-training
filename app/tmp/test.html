@@ -1,8 +1,13 @@
+<hr>
+
+<input type="text" name="name" ng-model="ctrl.search.name" placeholder="name">
+<input type="number" name="age" ng-model="ctrl.search.age" placeholder="age">
+<p>{{ctrl.search}}</p>
 <ul>
     <li ng-repeat="name in ctrl.list">
         {{ name | limitTo : -3 | uppercase }}
     </li>
-    <li ng-repeat="user in ctrl.userList | orderBy : 'age' : true"
+    <li ng-repeat="user in ctrl.userList | filter : ctrl.search"
         ng-click="ctrl.delUsr( user )"
         ng-class-even="'even'"
         ng-class-odd="'odd'"
